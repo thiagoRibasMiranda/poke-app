@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { getPokemon } from "../../services/PokemonService";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Loading from "../Loading/Loading";
 import PokemonStats from "../PokemonStats/PokemonStats";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
@@ -40,6 +41,9 @@ function PokemonCard({ pokemonName }) {
                 key={e.stat.name}
               />
             ))}
+          </div>
+          <div>
+            <FavoriteButton pokemonName={pokemon.name} />
           </div>
         </div>
       )}
