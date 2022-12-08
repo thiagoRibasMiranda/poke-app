@@ -1,18 +1,28 @@
 /* eslint-disable react/prop-types */
+import {
+  attackConvert,
+  defenseConvert,
+  hpConvert,
+  specialAttackConvert,
+  specialDefenseConvert,
+  speedConvert,
+} from "../../constants/constStats";
+import "./PokemonStats.css";
+
 function PokemonStats({ name, baseState }) {
   let width = null;
   if (name === "hp") {
-    width = baseState * 0.4;
+    width = baseState * hpConvert;
   } else if (name === "attack") {
-    width = baseState * 0.74626865671;
+    width = baseState * attackConvert;
   } else if (name === "defense") {
-    width = baseState * 0.55555555555;
+    width = baseState * defenseConvert;
   } else if (name === "special-attack") {
-    width = baseState * 0.64935064935;
+    width = baseState * specialAttackConvert;
   } else if (name === "special-defense") {
-    width = baseState * 0.8;
+    width = baseState * specialDefenseConvert;
   } else {
-    width = baseState * 0.71428571428;
+    width = baseState * speedConvert;
   }
   return (
     <div>
@@ -20,8 +30,8 @@ function PokemonStats({ name, baseState }) {
         <span className="">{name}</span>
         <span className="">{baseState}</span>
       </div>
-      <div className="">
-        <div className="" style={{ width: `${width}` }} />
+      <div className="teste">
+        <div className="teste2" style={{ width: `${width}%` }} />
       </div>
     </div>
   );
