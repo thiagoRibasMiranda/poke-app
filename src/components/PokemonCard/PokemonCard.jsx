@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { getPokemon } from "../../services/PokemonService";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
@@ -33,6 +34,8 @@ const StyledTypes = styled.div`
 
 const StyledHeading = styled.h3`
   text-align: center;
+  margin: 0px;
+  margin-bottom: 10px;
 `;
 
 const StyledButton = styled.div`
@@ -42,8 +45,13 @@ const StyledButton = styled.div`
 function PokemonCard({ pokemonName }) {
   const [pokemon, setPokemon] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isHome, setIsHome] = useState(false);
 
+  const location = useLocation();
   useEffect(() => {
+    if (location.pathname === "/") {
+      setIsHome(true);
+    }
     getPokemon(pokemonName).then((res) => {
       setPokemon(res);
       setIsLoading(false);
@@ -77,9 +85,11 @@ function PokemonCard({ pokemonName }) {
               />
             ))}
           </div>
-          <StyledButton>
-            <FavoriteButton pokemonName={pokemon.name} />
-          </StyledButton>
+          {isHome && (
+            <StyledButton>
+              <FavoriteButton pokemonName={pokemon.name} />
+            </StyledButton>
+          )}
         </StyledCard>
       )}
     </div>
