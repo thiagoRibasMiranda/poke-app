@@ -3,11 +3,16 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
   margin: 0 auto;
+  margin: 10px;
   padding: 6px 14px;
   border-radius: 6px;
   border: none;
   color: white;
-  background: rgb(66, 184, 221);
+  background-color: rgb(29 78 216);
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(30 64 175);
+  }
 `;
 
 function FavoriteButton({ pokemonName }) {
