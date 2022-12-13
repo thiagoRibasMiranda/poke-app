@@ -1,10 +1,43 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { getPokemon } from "../../services/PokemonService";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Loading from "../Loading/Loading";
 import PokemonStats from "../PokemonStats/PokemonStats";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
+
+const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding: 8px;
+  max-width: 220px;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: rgb(229 231 235);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+`;
+
+const StyledImg = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+`;
+
+const StyledTypes = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const StyledHeading = styled.h3`
+  text-align: center;
+`;
+
+const StyledButton = styled.div`
+  margin: 0 auto;
+`;
 
 function PokemonCard({ pokemonName }) {
   const [pokemon, setPokemon] = useState({});
@@ -22,16 +55,18 @@ function PokemonCard({ pokemonName }) {
       {isLoading ? (
         <Loading />
       ) : (
-        <div>
+        <StyledCard>
           <div>
-            <p>{pokemon.name}</p>
-            <img
-              src={pokemon.sprites.front_default}
+            <StyledImg
               alt={`${pokemon.name} img`}
+              src={pokemon.sprites.front_default}
             />
-            {pokemon.types.map((e) => (
-              <PokemonTypes type={e.type.name} key={e.type.name} />
-            ))}
+            <StyledHeading>{pokemon.name}</StyledHeading>
+            <StyledTypes>
+              {pokemon.types.map((e) => (
+                <PokemonTypes type={e.type.name} key={e.type.name} />
+              ))}
+            </StyledTypes>
           </div>
           <div>
             {pokemon.stats.map((e) => (
@@ -42,10 +77,10 @@ function PokemonCard({ pokemonName }) {
               />
             ))}
           </div>
-          <div>
+          <StyledButton>
             <FavoriteButton pokemonName={pokemon.name} />
-          </div>
-        </div>
+          </StyledButton>
+        </StyledCard>
       )}
     </div>
   );
