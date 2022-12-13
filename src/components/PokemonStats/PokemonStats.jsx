@@ -8,7 +8,6 @@ import {
   specialDefenseConvert,
   speedConvert,
 } from "../../constants/constStats";
-// import "./PokemonStats.css";
 
 const StyledStats = styled.div`
   margin: 0 auto;
