@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { getPokemonList } from "../../services/PokemonService";
+
+const GridPokemonList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 10px;
+`;
 
 function Home() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -16,7 +26,7 @@ function Home() {
   return (
     <div className="Home">
       <Header />
-      <div>
+      <GridPokemonList>
         {pokemonList.length ? (
           pokemonList.map((pokemon) => (
             <PokemonCard key={pokemon.name} pokemonName={pokemon.name} />
@@ -26,7 +36,7 @@ function Home() {
             <Loading />
           </div>
         )}
-      </div>
+      </GridPokemonList>
     </div>
   );
 }
