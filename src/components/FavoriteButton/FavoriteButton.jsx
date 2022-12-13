@@ -1,4 +1,15 @@
 /* eslint-disable react/prop-types */
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  margin: 0 auto;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  background: rgb(66, 184, 221);
+`;
+
 function FavoriteButton({ pokemonName }) {
   const handleClick = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites"));
@@ -13,9 +24,9 @@ function FavoriteButton({ pokemonName }) {
 
   return (
     <div>
-      <button type="button" onClick={handleClick}>
+      <StyledButton type="button" onClick={handleClick}>
         Add to favorites
-      </button>
+      </StyledButton>
     </div>
   );
 }
