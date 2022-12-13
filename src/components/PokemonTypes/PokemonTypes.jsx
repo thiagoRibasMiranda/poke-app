@@ -9,6 +9,7 @@ const StyledType = styled.span`
   border-width: 1px;
   border-color: rgb(148 163 184);
   border-radius: 9999px;
+  font-size: 14px;
 `;
 
 function PokemonTypes({ type }) {
