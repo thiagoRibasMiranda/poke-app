@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import styled from "styled-components";
 import {
   attackConvert,
   defenseConvert,
@@ -7,7 +8,33 @@ import {
   specialDefenseConvert,
   speedConvert,
 } from "../../constants/constStats";
-import "./PokemonStats.css";
+// import "./PokemonStats.css";
+
+const StyledStats = styled.div`
+  margin: 0 auto;
+  width: 94%;
+  border-color: rgb(15 23 42);
+  border-width: 1px;
+`;
+
+const StyledSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Progress = styled.section`
+  height: 8px;
+  background-color: rgb(229 231 235);
+  border-radius: 9999px;
+`;
+
+const ProgressBar = styled.div`
+  width: ${(props) => props.width}%;
+  height: 7px;
+  background-color: rgb(37 99 235);
+  border-radius: 9999px;
+`;
 
 function PokemonStats({ name, baseState }) {
   let width = null;
@@ -24,16 +51,17 @@ function PokemonStats({ name, baseState }) {
   } else {
     width = baseState * speedConvert;
   }
+
   return (
-    <div>
-      <div className="">
-        <span className="">{name}</span>
-        <span className="">{baseState}</span>
-      </div>
-      <div className="teste">
-        <div className="teste2" style={{ width: `${width}%` }} />
-      </div>
-    </div>
+    <StyledStats>
+      <StyledSpan>
+        <span>{name}</span>
+        <span>{baseState}</span>
+      </StyledSpan>
+      <Progress>
+        <ProgressBar width={width} />
+      </Progress>
+    </StyledStats>
   );
 }
 
