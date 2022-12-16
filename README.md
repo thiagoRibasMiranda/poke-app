@@ -10,7 +10,7 @@ This project was built with the intention of remembering some subjects. For this
 
 ### Demo
 
-![Poke App Demo](demo/Peek 16-12-2022 17-40.gif)
+![Poke App Demo](demo/Peek16-12-202217-40.gif)
 
 ### Built with
 
